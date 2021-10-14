@@ -8,13 +8,22 @@ class complesso {
         ~complesso ();
 
         double modulo ();      
-        double fase ();      
+        double fase ();
+
+        double get_reale();
+        double get_immaginario();      
 
         complesso operator= (const complesso & orig);
         complesso operator+ (const complesso & addendo);
         complesso operator- (const complesso & minuendo);
         complesso operator* (const complesso & fattore);
-        complesso operator/ (const complesso & dividendo);       
+        complesso operator/ (const complesso & dividendo);   
+
+        
+        complesso operator+= (const complesso & addendo);
+        complesso operator-= (const complesso & minuendo);
+        complesso operator*= (const complesso & fattore);
+        complesso operator/= (const complesso & dividendo);    
 
     private:
         double m_real;
