@@ -13,7 +13,9 @@ int main (int argc , char * argv[]) {
     TApplication myApp ("myApp" , &argc , argv);
         TCanvas c1;
         h1_ptr->Draw();
-        c1.Print("es31_h1.png" , "png");
+        c1.Print("misc_output/es31_h1.png" , "png");
     myApp.Run();
     delete h1_ptr;
+    
+    return 0;
 }
