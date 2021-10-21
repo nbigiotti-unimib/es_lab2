@@ -21,10 +21,10 @@ run33:	es33
 	$(BIN_DIR)/$^
 
 es34: src/es_34/main_34.cpp
-	$(CC)	$^	-o	$(BIN_DIR)/$@
+	$(CC)	$^	-o	$(BIN_DIR)/$@	$(CFLAGS)
 
 run34:	es34
-	$(BIN_DIR)/$^
+	$(BIN_DIR)/$^	1000
 
 es35: src/es_35/main_35.cpp
 	$(CC)	$^	-o	$(BIN_DIR)/$@	$(CFLAGS)
