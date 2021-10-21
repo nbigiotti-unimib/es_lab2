@@ -30,7 +30,7 @@ es35: src/es_35/main_35.cpp
 	$(CC)	$^	-o	$(BIN_DIR)/$@	$(CFLAGS)
 
 run35:	es35
-	$(BIN_DIR)/$^
+	$(BIN_DIR)/$^	1000
 
 es36: src/es_36/main_36.cpp
 	$(CC)	$^	-o	$(BIN_DIR)/$@	$(CFLAGS)
