@@ -2,44 +2,44 @@ CC=c++
 BIN_DIR=bin
 CFLAGS=`root-config --glibs --cflags`
 
-es41: src/es_41/main_41.cpp
+es51: src/es_51/main_51.cpp
 	$(CC)	$^	-o	$(BIN_DIR)/$@	$(CFLAGS)
 
-run41:	es41
+run51:	es51
 	$(BIN_DIR)/$^
 
-es42: src/es_42/main_42.cpp
+es52: src/es_52/main_52.cpp
 	$(CC)	$^	-o	$(BIN_DIR)/$@	$(CFLAGS)
 
-run42:	es42
+run52:	es52
 	$(BIN_DIR)/$^
 
-es43: src/es_43/main_43.cpp
+es53: src/es_53/main_53.cpp
 	$(CC)	$^	-o	$(BIN_DIR)/$@	$(CFLAGS)
 
-run43:	es43
+run53:	es53
 	$(BIN_DIR)/$^
 
-es44: src/es_44/main_44.cpp
+es54: src/es_54/main_54.cpp
 	$(CC)	$^	-o	$(BIN_DIR)/$@	$(CFLAGS)
 
-run44:	es44
-	$(BIN_DIR)/$^	1000
-
-es45: src/es_45/main_45.cpp
-	$(CC)	$^	-o	$(BIN_DIR)/$@	$(CFLAGS)
-
-run45:	es45
+run54:	es54
 	$(BIN_DIR)/$^
 
-es46: src/es_46/main_46.cpp
+es55: src/es_55/main_55.cpp
 	$(CC)	$^	-o	$(BIN_DIR)/$@	$(CFLAGS)
 
-run46:	es46
+run55:	es55
 	$(BIN_DIR)/$^
 
-es47: src/es_47/main_47.cpp
+es56: src/es_56/main_56.cpp
 	$(CC)	$^	-o	$(BIN_DIR)/$@	$(CFLAGS)
 
-run47:	es47
+run56:	es56
+	$(BIN_DIR)/$^
+
+es57: src/es_57/main_57.cpp
+	$(CC)	$^	-o	$(BIN_DIR)/$@	$(CFLAGS)
+
+run57:	es57
 	$(BIN_DIR)/$^
