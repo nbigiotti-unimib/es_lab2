@@ -2,7 +2,7 @@ CPPC=c++
 BIN_DIR=bin
 CPPFLAGS=`root-config --glibs --cflags`
 es71:	src/es_71/main_71.cpp
-	$(CPPC)	$^	-o	$(BIN_DIR)/$@	$(CPPFLAGS)
+	$(CPPC)	$^	src/es_71/main_71.cc	-o	$(BIN_DIR)/$@	$(CPPFLAGS)
 
 run71:	es71
 	$(BIN_DIR)/$^

@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.cps": "javascript",
+        "*.tcc": "cpp",
+        "cmath": "cpp",
+        "random": "cpp"
+    }
+}
