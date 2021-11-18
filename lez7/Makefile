@@ -8,7 +8,7 @@ run71:	es71
 	$(BIN_DIR)/$^
 
 es72:	src/es_72/main_72.cpp
-	$(CPPC)	$^	-o	$(BIN_DIR)/$@	$(CPPFLAGS)
+	$(CPPC)	$^	src/es_71/main_71.cc	-o	$(BIN_DIR)/$@	$(CPPFLAGS)
 
 run72:	es72
 	$(BIN_DIR)/$^
