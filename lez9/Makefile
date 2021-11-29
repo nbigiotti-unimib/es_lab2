@@ -1,6 +1,6 @@
 CPPC=c++
 BIN_DIR=bin
-CPPFLAGS=`root-config --glibs --cflags`
+CPPFLAGS=-lLAB2	`root-config --glibs --cflags`
 es91:	src/es_91/main_91.cpp
 	$(CPPC)	$^	-o	$(BIN_DIR)/$@	$(CPPFLAGS)
 
@@ -11,7 +11,7 @@ es92:	src/es_92/main_92.cpp
 	$(CPPC)	$^	-o	$(BIN_DIR)/$@	$(CPPFLAGS)
 
 run92:	es92
-	$(BIN_DIR)/$^
+	$(BIN_DIR)/$^	2	1000000
 
 es93:	src/es_93/main_93.cpp
 	$(CPPC)	$^	-o	$(BIN_DIR)/$@	$(CPPFLAGS)
