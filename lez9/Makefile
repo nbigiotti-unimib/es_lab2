@@ -17,7 +17,7 @@ es93:	src/es_93/main_93.cpp
 	$(CPPC)	$^	-o	$(BIN_DIR)/$@	$(CPPFLAGS)
 
 run93:	es93
-	$(BIN_DIR)/$^
+	$(BIN_DIR)/$^	1
 
 es94:	src/es_94/main_94.cpp
 	$(CPPC)	$^	-o	$(BIN_DIR)/$@	$(CPPFLAGS)
