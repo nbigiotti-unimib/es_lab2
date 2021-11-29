@@ -1,6 +1,6 @@
 CPPC=c++
 BIN_DIR=bin
-CPPFLAGS=`root-config --glibs --cflags`
+CPPFLAGS=-lLAB2	`root-config --glibs --cflags`
 es81:	src/es_81/main_81.cpp
 	$(CPPC)	$^	~/repos/lab2_utils/src/statistiche.cc	~/repos/lab2_utils/src/rand_num.cc	-o	$(BIN_DIR)/$@	$(CPPFLAGS)	
 
@@ -14,7 +14,7 @@ run82:	es82
 	$(BIN_DIR)/$^
 
 es83:	src/es_83/main_83.cpp
-	$(CPPC)	$^	-o	$(BIN_DIR)/$@	-lLAB2	$(CPPFLAGS)
+	$(CPPC)	$^	-o	$(BIN_DIR)/$@	$(CPPFLAGS)
 
 run83:	es83
 	$(BIN_DIR)/$^
