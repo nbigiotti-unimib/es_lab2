@@ -6,7 +6,7 @@ N_EX=""
 CPP_FILE_TEMPL="#include <iostream>\n\nint main(int argc , char * argv[]) {\n\tprintf(\"TEST: OK\");\n\treturn 0;\n}"
 
 read -p "Inserire il numero della lezione: " N_LESS
-read -p "Inserire numero di esercizi:" N_EX
+read -p "Inserire numero di esercizi: " N_EX
 
 LESS_DIR="lez$N_LESS"
 
@@ -16,7 +16,7 @@ touch $LESS_DIR/Makefile
 
 echo 'CPPC=c++' >> $LESS_DIR/Makefile
 echo 'BIN_DIR=bin' >> $LESS_DIR/Makefile
-echo 'CPPFLAGS=`root-config --glibs --cflags`' >> $LESS_DIR/Makefile
+echo 'CPPFLAGS=`root-config --glibs --cflags`   -lLAB2' >> $LESS_DIR/Makefile
 
 for i in `seq 1 $N_EX`;
 do
