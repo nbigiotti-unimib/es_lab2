@@ -1,8 +1,8 @@
 CPPC=c++
 BIN_DIR=bin
-CPPFLAGS=`root-config --glibs --cflags`   -lLAB2
+CPPFLAGS=`root-config --glibs --cflags`
 es111:	src/es_111/main_111.cpp
-	$(CPPC)	$^	-o	$(BIN_DIR)/$@	$(CPPFLAGS)
+	$(CPPC)	$^	-o	$(BIN_DIR)/$@	src/es_111/pdf.cc	src/es_111/rand_num.cc	$(CPPFLAGS)
 
 run111:	es111
 	$(BIN_DIR)/$^
