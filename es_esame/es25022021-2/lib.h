@@ -1,0 +1,1 @@
+double pdf_tac (double pdf(double) , double x_min , double x_max); 
