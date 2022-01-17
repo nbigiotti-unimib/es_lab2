@@ -31,21 +31,21 @@ int main () {
     hist.Draw();
     c1.Print("plot.png");
 
-    int n_toy {1000} , toy_events {100};
+    int n_toy {100000} , toy_events {100};
     vector<double> toy_mean , toy_std_dev;
 
     points.clear();    
 
     for (int i {0} ; i < n_toy ; ++i) {
-        for(int k {0} ; i < toy_events ; ++k) {
+        for(int k {0} ; k < toy_events ; ++k) {
             points.push_back(triangle_tac(0. , 3.));
         }
         toy_mean.push_back(mean(points));
         toy_std_dev.push_back(std_dev_bessel(points , toy_mean.back()));
         points.clear();
     }
-
-    TH1F mean_hist ("mean_hist" , "Istogramma" , 50 , 0. , 10.);
+    
+    TH1F mean_hist ("mean_hist" , "Istogramma" , 50 , 1.8 , 2.4);
 
     for (vector<double>::iterator it = toy_mean.begin() ; it != toy_mean.end() ; ++it) {
         mean_hist.Fill(*it);
@@ -53,9 +53,9 @@ int main () {
 
     TCanvas c2;
     mean_hist.Draw();
-    c1.Print("mean.png" , "png"); 
+    c2.Print("mean.png" , "png"); 
 
-    TH1F std_dev_hist ("mean_hist" , "Istogramma" , 50 , 0. , 3.);
+    TH1F std_dev_hist ("std_dev_hist" , "Istogramma" , 50 , 0.54 , 0.86);
 
     for (vector<double>::iterator it = toy_std_dev.begin() ; it != toy_std_dev.end() ; ++it) {
         std_dev_hist.Fill(*it);
@@ -63,7 +63,7 @@ int main () {
 
     TCanvas c3;
     std_dev_hist.Draw();
-    c1.Print("std.png" , "png");
-
+    c3.Print("std.png" , "png");
+    
     return 0;
 }
