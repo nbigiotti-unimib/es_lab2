@@ -11,6 +11,8 @@
 
 using namespace std;
 
+TH1F fill_hist (vector<double> & data , const char * name);
+
 int main () {
 
     //Parte 1 - Generazione punti secondo pdf triangolare
@@ -23,10 +25,7 @@ int main () {
     }
 
     //Riempiamo L'istogramma con i punti generati
-    TH1F hist ("hist" , "Istogramma" , 50 , 0. , 3.);
-    for (vector<double>::iterator it = points.begin() ; it != points.end() ; ++it) {
-        hist.Fill(*it);
-    }
+    TH1F hist = fill_hist(points , "std_dev_hist");
 
     //Calcolo e stampa di media, deviazione standard e istogramma
     cout << "\tmedia del campione:" << mean (points) << endl;
@@ -37,7 +36,7 @@ int main () {
     c1.Print("plot.png");
 
     //Parte 2 - Toy experiments
-    int n_toy {100000} , toy_events {100};
+    int n_toy {10000} , toy_events {100};
     vector<double> toy_mean , toy_std_dev;
 
     points.clear();    
@@ -55,17 +54,14 @@ int main () {
     }
     
     //Creiamo e stampiamo gli istogrammi relativi ai risultati dei toy experiments
-    TH1F mean_hist ("mean_hist" , "Istogramma" , 50 , 1.8 , 2.4);
-    for (vector<double>::iterator it = toy_mean.begin() ; it != toy_mean.end() ; ++it) {
-        mean_hist.Fill(*it);
-    }
+    TH1F mean_hist = fill_hist(toy_mean , "mean_hist");
 
     TCanvas c2;
     mean_hist.Draw();
     c2.Print("mean.png" , "png"); 
 
 
-    TH1F std_dev_hist ("std_dev_hist" , "Istogramma" , 50 , 0.54 , 0.86);
+    TH1F std_dev_hist = fill_hist(toy_mean , "std_dev_hist");
     for (vector<double>::iterator it = toy_std_dev.begin() ; it != toy_std_dev.end() ; ++it) {
         std_dev_hist.Fill(*it);
     }
@@ -75,4 +71,30 @@ int main () {
     c3.Print("std.png" , "png");
     
     return 0;
+}
+
+//Questa funzione crea un istogramma con identificatore di root `name`
+//e lo riempe con i dati contenuti nel campione `data`,
+//la scelta dei limiti dell'istogramma e del numero di bin è automatica
+TH1F fill_hist (vector<double> & data , const char * name) {
+    double percent_25 , percent_75 , bin_wdth;
+    sort(data.begin() , data.end());
+
+    //Utilizzo la regola di Freedman-Diaconis per calcolare 
+    //automaticamente il numero di bin necessari
+    percent_25 = data.at( round(static_cast<double> (data.size()) * 0.25) - 1);
+    percent_75 = data.at( round(static_cast<double> (data.size()) * 0.75) - 1);
+    bin_wdth = 2 * (percent_75 - percent_25) / cbrt(data.size());
+    TH1F tmp_hist (
+        name ,
+        name ,
+        round((data.back() - data.front()) / bin_wdth) ,
+        data.front() ,
+        data.back()
+    );
+    for(vector<double>::iterator it = data.begin() ; it != data.end() ; ++it)
+        tmp_hist.Fill(*it);
+
+    //cout << "bin_width: " << bin_wdth << "\tfirst: " << data.front() << "\tlast: " << data.back() << endl;
+    return tmp_hist;
 }
