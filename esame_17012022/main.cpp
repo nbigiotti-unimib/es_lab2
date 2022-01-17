@@ -15,38 +15,36 @@ int main () {
 
     //Parte 1 - Generazione punti secondo pdf triangolare
     int n_events = 1000;
-    double point_max {-100.} , point_min {100.};
     vector<double> points;
 
-    //Generiamo <n_events> punti distribuiti secondo una pdf triangolare
+    //Generiamo `n_events` punti distribuiti secondo una pdf triangolare
     for(int i = 0 ; i < n_events ; ++i) {
-        double tmp_point {triangle_tac(0. , 3.)};
-        points.push_back(tmp_point);
+        points.push_back(triangle_tac(0. , 3.));
     }
 
     //Riempiamo L'istogramma con i punti generati
-    TH1F hist ("hist" , "Istogramma" , 50 , 0. , 3.);
+    TH1F hist ("hist" , "Istogramma misure" , 13 , 0. , 3.);
     for (vector<double>::iterator it = points.begin() ; it != points.end() ; ++it) {
         hist.Fill(*it);
     }
 
     //Calcolo e stampa di media, deviazione standard e istogramma
-    cout << "\tmedia del campione:" << mean (points) << endl;
-    cout << "\tdeviazione standard del campione:" << std_dev_bessel (points , mean (points)) << endl;
+    cout << "\tmedia del campione:" << mean(points) << endl;
+    cout << "\tdeviazione standard del campione:" << std_dev_bessel(points , mean (points)) << endl;
 
     TCanvas c1;
     hist.Draw();
     c1.Print("plot.png");
 
     //Parte 2 - Toy experiments
-    int n_toy {100000} , toy_events {100};
+    int n_toy {10000} , toy_events {100};
     double mean_max{-100.} , mean_min{100.};
     double std_dev_max{-100.} , std_dev_min{100.};
     vector<double> toy_mean , toy_std_dev;
 
     points.clear();    
 
-    //Eseguiamo un numero <n_toy> di toy experiments,
+    //Eseguiamo un numero `n_toy` di toy experiments,
     //conservando i valori di media e varianza associati
     //ad ogni campione
     
@@ -71,8 +69,8 @@ int main () {
     }
     
     //Creiamo e stampiamo gli istogrammi relativi ai risultati dei toy experiments
-    TH1F mean_hist ("mean_hist" , "Istogramma" , 50 , mean_min , mean_max);
-    TH1F std_dev_hist ("std_dev_hist" , "Istogramma" , 50 , std_dev_min , std_dev_max);
+    TH1F mean_hist ("mean_hist" , "Istogramma media" , 30 , mean_min , mean_max);
+    TH1F std_dev_hist ("std_dev_hist" , "Istogramma deviazione standard" , 30 , std_dev_min , std_dev_max);
     for (int i = 0 ; i < n_toy ; ++i) {
         mean_hist.Fill(toy_mean[i]);
         std_dev_hist.Fill(toy_std_dev[i]);
