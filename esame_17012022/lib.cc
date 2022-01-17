@@ -1,3 +1,5 @@
+//Nicolas Bigiotti - 865437
+
 #include <cstdlib>
 #include <cmath>
 #include <vector>

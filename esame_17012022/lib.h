@@ -1,3 +1,5 @@
+//Nicolas Bigiotti - 865437
+
 #ifndef LIB_H
 #define LIB_H
 
