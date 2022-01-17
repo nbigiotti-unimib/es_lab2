@@ -69,8 +69,8 @@ int main () {
     }
     
     //Creiamo e stampiamo gli istogrammi relativi ai risultati dei toy experiments
-    TH1F mean_hist ("mean_hist" , "Istogramma media" , 30 , mean_min , mean_max);
-    TH1F std_dev_hist ("std_dev_hist" , "Istogramma deviazione standard" , 30 , std_dev_min , std_dev_max);
+    TH1F mean_hist ("mean_hist" , "Istogramma media" , 50 , mean_min , mean_max);
+    TH1F std_dev_hist ("std_dev_hist" , "Istogramma deviazione standard" , 50 , std_dev_min , std_dev_max);
     for (int i = 0 ; i < n_toy ; ++i) {
         mean_hist.Fill(toy_mean[i]);
         std_dev_hist.Fill(toy_std_dev[i]);
