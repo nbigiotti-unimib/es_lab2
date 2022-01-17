@@ -1,0 +1,1 @@
+double triangle_tac (double x_min , double x_max);
