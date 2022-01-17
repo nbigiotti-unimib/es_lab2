@@ -1,4 +1,8 @@
 #include <cstdlib>
+#include <cmath>
+#include <vector>
+
+using namespace std;
 
 static double triangle_pdf (double x);
 static double rand_range(double min , double max);
@@ -14,6 +18,23 @@ double triangle_tac (double x_min , double x_max) {
         
     return x;
 }
+
+double mean (vector<double> & sample) {
+    double mean {0.};
+    for (vector<double>::iterator it = sample.begin() ; it != sample.end() ; ++it) {
+        mean += *it;
+    }
+    return mean / static_cast<double> (sample.size());
+}
+
+double std_dev_bessel (vector<double> & sample , double mean) {
+    double std_dev {0.};
+    for (vector<double>::iterator it = sample.begin() ; it != sample.end() ; ++it) {
+        std_dev += (*it - mean) * (*it - mean);
+    }
+    return sqrt (std_dev / static_cast<double> (sample.size() - 1));
+}
+
 
 static double rand_range(double min , double max) {  
     return min + (rand() / static_cast<double> (RAND_MAX)) * (max - min);
